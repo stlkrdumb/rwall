@@ -1,0 +1,18 @@
+import { useState } from 'react'
+import './App.css'
+import WallpaperGallery from './WallpaperGallery'
+import Header from './Header'
+import Footer from './Footer'
+
+
+function App() {
+  return (
+    <>
+      <Header/>
+      <WallpaperGallery/>
+      <Footer/>
+    </>
+  )
+}
+
+export default App
