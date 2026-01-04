@@ -10,13 +10,13 @@ export default defineConfig({
     tailwindcss(),
     minipic({
       sharpOptions: {
-        png: { quality: 70 },
-        webp: { quality: 70 }
+        png: { quality: 100 },
+        webp: { quality: 100 }
       },
       convert: [
         {from: 'png', to: 'webp'}
       ],
-      exclude: ['./public'],
+      convertPublic: false,
       cache: false
     })
   ],
