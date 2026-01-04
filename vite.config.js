@@ -11,12 +11,11 @@ export default defineConfig({
     minipic({
       sharpOptions: {
         png: { quality: 100 },
-        webp: { quality: 100 }
+        webp: { quality: 80 }
       },
       convert: [
         {from: 'png', to: 'webp'}
       ],
-      convertPublic: false,
       cache: false
     })
   ],

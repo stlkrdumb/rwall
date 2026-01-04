@@ -2,15 +2,14 @@
 const wallpapers = import.meta.glob('../public/wallpapers/*.png', { eager: true, query: '?url', import: 'default'})
 
 function WallpaperGallery() {
-    function wallpaperItem(image, index) {
-        index++;
+    function wallpaperItem(source, placeholder) {
         return (
-            <div className="relative" key={index.toString()}>
-                <img className="w-full h-auto aspec-video" src={image} alt={`image-00${index}`} key={index} />
+            <div className="relative" key={placeholder}>
+                <img className="w-full h-auto aspec-video" src={placeholder} alt={`image-${placeholder}`} key={placeholder} />
                 <div className="absolute flex justify-center aligns-center 
                 bottom-0 left-0 right-0 p-3 justify-center">
-                <a href={`/wallpapers/00${index}.png`}
-                    download={`00${index}.png`}
+                <a href={source.replace('../public', '')}
+                    download={source.replace('../public/wallpapers/','')}
                     className="flex bg-mint border-3 border-gray 
                     hover:bg-gray-800 hover:text-mint 
                     transition delay-150 duration-300 ease-in-out
@@ -33,12 +32,11 @@ function WallpaperGallery() {
             </div>
         )
     }
-    const wallpaperList = Object.values(wallpapers).map(
-        (image, index) => (
-             wallpaperItem(image,index)
-        )
-    )
 
+    const wallpaperList = Object.entries(wallpapers).map((image) => {
+        // source image[0] and placeholder image[1]
+        return wallpaperItem(image[0], image[1])
+    })
 
     if (Object.values(wallpapers).length % 2 === 0) {
         return (
